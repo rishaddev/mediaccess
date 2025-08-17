@@ -26,16 +26,12 @@ export async function POST(req) {
     // }
 
     const patientRef = collection(db, "patients");
-    const q = query(
-      patientRef,
-      where("name", "==", name),
-      where("contactNumber", "==", contactNumber)
-    );
+    const q = query(patientRef, where("email", "==", email));
 
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
       return NextResponse.json(
-        { message: "Patient exists already!" },
+        { message: "User exists already!" },
         { status: 422 }
       );
     }
