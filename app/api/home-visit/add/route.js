@@ -16,7 +16,9 @@ export async function POST(req) {
       city = "",
       postalCode = "",
       plusCode = "",
+      cost = "",
       status = "Pending",
+      instructions = "",
     } = data;
 
     const now = new Date();
@@ -38,7 +40,9 @@ export async function POST(req) {
       postalCode,
       plusCode,
       message,
+      cost,
       status,
+      instructions,
       createdDate,
       createdTime,
     };
