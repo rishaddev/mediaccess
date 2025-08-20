@@ -39,7 +39,6 @@ export async function POST(req) {
       city,
       postalCode,
       plusCode,
-      message,
       cost,
       status,
       instructions,
