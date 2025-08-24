@@ -7,13 +7,15 @@ export async function POST(req) {
     const data = await req.json();
     const {
       patientId = "",
+      patientName = "",
       contactNumber = "",
-      image = "",
-      note = "",
-      statusPlaced = true,
-      statusProcessing = false,
-      statusDispatched = false,
-      statusDelivered = false,
+      address = "",
+      notes = "",
+      prescriptionImageData = "",
+      orderDate = "",
+      status = "",
+      orderItems = [],
+      price = "",
     } = data;
 
     const now = new Date();
@@ -27,21 +29,22 @@ export async function POST(req) {
       patientId,
       patientName,
       contactNumber,
-      image,
-      note,
-      statusPlaced,
-      statusProcessing,
-      statusDispatched,
-      statusDelivered,
+      address,
+      notes,
+      prescriptionImageData,
+      orderDate,
+      status,
+      orderItems,
+      price,
       createdDate,
       createdTime,
     };
 
-    const docRef = await addDoc(collection(db, "homevisits"), homeVisitData);
+    const docRef = await addDoc(collection(db, "pharmacyorders"), homeVisitData);
 
     return NextResponse.json(
       {
-        message: "Home Visit Scheduled!",
+        message: "Order Placed Successfully!",
         referenceId: docRef.id,
       },
       { status: 200 }
